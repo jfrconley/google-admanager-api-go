@@ -6,9 +6,9 @@ import (
 	"log"
 	"os"
 
-	admanager "google-admanager-api-go"
-	v202505 "google-admanager-api-go/services/v202505"
-	"google-admanager-api-go/services/v202505/line_item_service" // types only
+	admanager "github.com/jfrconley/google-admanager-api-go"
+	v202505 "github.com/jfrconley/google-admanager-api-go/services/v202505"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/line_item_service" // types only
 )
 
 func main() {

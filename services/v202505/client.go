@@ -3,23 +3,23 @@
 package v202505
 
 import (
-	admanager "google-admanager-api-go"
 	"github.com/hooklift/gowsdl/soap"
+	admanager "github.com/jfrconley/google-admanager-api-go"
 
-	"google-admanager-api-go/services/v202505/network_service"
-	"google-admanager-api-go/services/v202505/order_service"
-	"google-admanager-api-go/services/v202505/line_item_service"
-	"google-admanager-api-go/services/v202505/company_service"
-	"google-admanager-api-go/services/v202505/creative_service"
-	"google-admanager-api-go/services/v202505/creative_set_service"
-	"google-admanager-api-go/services/v202505/inventory_service"
-	"google-admanager-api-go/services/v202505/report_service"
-	"google-admanager-api-go/services/v202505/user_service"
-	"google-admanager-api-go/services/v202505/forecast_service"
-	"google-admanager-api-go/services/v202505/custom_targeting_service"
-	"google-admanager-api-go/services/v202505/line_item_creative_association_service"
-	"google-admanager-api-go/services/v202505/placement_service"
-	"google-admanager-api-go/services/v202505/publisher_query_language_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/company_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/creative_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/creative_set_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/custom_targeting_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/forecast_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/inventory_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/line_item_creative_association_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/line_item_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/network_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/order_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/placement_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/publisher_query_language_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/report_service"
+	"github.com/jfrconley/google-admanager-api-go/services/v202505/user_service"
 )
 
 // Version is the Ad Manager API version this package targets.
@@ -100,4 +100,3 @@ func NewPlacementService(c *admanager.Client) placement_service.PlacementService
 func NewPublisherQueryLanguageService(c *admanager.Client) publisher_query_language_service.PublisherQueryLanguageServiceInterface {
 	return publisher_query_language_service.NewPublisherQueryLanguageServiceInterface(NewService(c, "PublisherQueryLanguageService"))
 }
-
