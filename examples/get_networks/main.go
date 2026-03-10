@@ -7,7 +7,7 @@ import (
 
 	admanager "google-admanager-api-go"
 	v202505 "google-admanager-api-go/services/v202505"
-	"google-admanager-api-go/services/v202505/line_item_service"
+	"google-admanager-api-go/services/v202505/line_item_service" // types only
 )
 
 func main() {
@@ -15,6 +15,7 @@ func main() {
 
 	keyFile := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS")
 	networkCode := os.Getenv("AD_MANAGER_NETWORK_CODE")
+	admanager.
 
 	if keyFile == "" || networkCode == "" {
 		log.Fatal("Set GOOGLE_APPLICATION_CREDENTIALS and AD_MANAGER_NETWORK_CODE")
@@ -30,22 +31,7 @@ func main() {
 		ApplicationName: "admanager-go-example",
 	}, ts)
 
-	//networkSvc := network_service.NewNetworkServiceInterface(
-	//	v202505.NewService(client, "NetworkService"),
-	//)
-
-	//resp, err := networkSvc.GetCurrentNetwork(&network_service.GetCurrentNetwork{})
-	//if err != nil {
-	//	log.Fatalf("GetCurrentNetwork failed: %v", err)
-	//}
-	//
-	//n := resp.Rval
-	//fmt.Printf("Network: %s (code: %s)\n", n.DisplayName, n.NetworkCode)
-	//fmt.Printf("  Currency:  %s\n", n.CurrencyCode)
-	//fmt.Printf("  Time Zone: %s\n", n.TimeZone)
-	//fmt.Printf("  Test:      %v\n", n.IsTest)
-
-	lineItemSvc := line_item_service.NewLineItemServiceInterface(v202505.NewService(client, "LineItemService"))
+	lineItemSvc := v202505.NewLineItemService(client)
 
 	resp, err := lineItemSvc.GetLineItemsByStatement(&line_item_service.GetLineItemsByStatement{
 		FilterStatement: &line_item_service.Statement{
