@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"os"
 
@@ -15,7 +16,6 @@ func main() {
 
 	keyFile := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS")
 	networkCode := os.Getenv("AD_MANAGER_NETWORK_CODE")
-	admanager.
 
 	if keyFile == "" || networkCode == "" {
 		log.Fatal("Set GOOGLE_APPLICATION_CREDENTIALS and AD_MANAGER_NETWORK_CODE")
@@ -45,4 +45,10 @@ func main() {
 
 	log.Printf("Line Items: %v\n", resp.Rval.TotalResultSetSize)
 
+	jsonData, err := json.Marshal(resp.Rval)
+	if err != nil {
+		log.Fatalf("Failed to marshal response: %v", err)
+	}
+
+	log.Printf("Line Items: %v\n", string(jsonData))
 }
