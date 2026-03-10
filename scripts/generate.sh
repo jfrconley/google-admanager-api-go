@@ -67,7 +67,7 @@ for version in "${VERSIONS[@]}"; do
     pkg=$(to_snake_case "${service}")
 
     echo "Generating ${service} for ${version} (package: ${pkg})..."
-    gowsdl \
+    go tool gowsdl \
       -d "${version_dir}" \
       -o "${pkg}.go" \
       -p "${pkg}" \

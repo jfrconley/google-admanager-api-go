@@ -139,8 +139,4 @@ make generate
 go mod tidy
 ```
 
-This requires the `gowsdl` CLI:
-
-```bash
-go install github.com/hooklift/gowsdl/cmd/gowsdl@latest
-```
+The `gowsdl` CLI is declared as a [Go tool dependency](https://go.dev/blog/tools) in `go.mod`, so no manual install is needed — `go tool gowsdl` works out of the box after cloning.
