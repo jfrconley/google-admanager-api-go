@@ -27,6 +27,7 @@ SERVICES=(
   "LineItemCreativeAssociationService"
   "PlacementService"
   "PublisherQueryLanguageService"
+  "NativeStyleService"
 )
 
 # ---------- Helpers ----------

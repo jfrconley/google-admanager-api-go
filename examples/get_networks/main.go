@@ -6,6 +6,8 @@ import (
 	"log"
 	"os"
 
+	"golang.org/x/oauth2/google"
+
 	admanager "github.com/jfrconley/google-admanager-api-go"
 	v202505 "github.com/jfrconley/google-admanager-api-go/services/v202505"
 	"github.com/jfrconley/google-admanager-api-go/services/v202505/line_item_service" // types only
@@ -14,17 +16,23 @@ import (
 func main() {
 	ctx := context.Background()
 
-	keyFile := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS")
+	// keyFile := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS")
 	networkCode := os.Getenv("AD_MANAGER_NETWORK_CODE")
 
-	if keyFile == "" || networkCode == "" {
-		log.Fatal("Set GOOGLE_APPLICATION_CREDENTIALS and AD_MANAGER_NETWORK_CODE")
+	if networkCode == "" {
+		log.Fatal("Set AD_MANAGER_NETWORK_CODE")
 	}
 
-	ts, err := admanager.ServiceAccountTokenSourceFromFile(ctx, keyFile)
+	// ts, err := admanager.ServiceAccountTokenSourceFromFile(ctx, keyFile)
+	// if err != nil {
+	// 	log.Fatalf("Failed to create token source: %v", err)
+	// }
+
+	creds, err := google.DefaultTokenSource(ctx, admanager.Scope)
 	if err != nil {
 		log.Fatalf("Failed to create token source: %v", err)
 	}
+	ts := creds
 
 	client := admanager.NewClient(ctx, admanager.Config{
 		NetworkCode:     networkCode,

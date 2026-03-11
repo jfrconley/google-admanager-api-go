@@ -1,7 +1,7 @@
 .PHONY: generate clean tidy
 
 generate:
-	./scripts/generate.sh
+	go generate ./...
 
 clean:
 	rm -rf services/
